@@ -16,8 +16,8 @@ def knapsack (W, wt, val, n):
 
 
 W = 50
-val = [60, 100, 120]
-wt = [10, 20, 30]
+val = [120, 60, 100]
+wt = [30, 10, 20]
 n = len(val)
 
 max_value = knapsack(W, wt, val, n)
