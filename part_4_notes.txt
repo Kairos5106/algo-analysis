@@ -1,0 +1,59 @@
+-- SET DIFFERENCE METHOD --
+
+Implementing the set difference algorithm for text comparison in Python is straightforward. The idea is to split the texts into words, convert these words into sets, and then find the difference between these sets to identify unique words in each text.
+
+Here is a step-by-step implementation:
+
+Tokenize the text: Split the text into words.
+Convert to sets: Convert the list of words into sets to eliminate duplicates.
+Find set differences: Use set operations to find words that are unique to each text.
+Here is a complete example in Python:
+
+def tokenize(text):
+    # Split the text into words
+    # You can use more advanced tokenization here if needed (e.g., NLTK, spaCy)
+    return text.split()
+
+def set_difference(text1, text2):
+    # Tokenize the texts
+    words1 = set(tokenize(text1))
+    words2 = set(tokenize(text2))
+    
+    # Find the difference in each direction
+    diff1 = words1 - words2
+    diff2 = words2 - words1
+    
+    return diff1, diff2
+
+# Example texts
+text1 = "This is the first letter."
+text2 = "This is the second letter."
+
+# Get the differences
+unique_to_text1, unique_to_text2 = set_difference(text1, text2)
+
+print("Words unique to text1:", unique_to_text1)
+print("Words unique to text2:", unique_to_text2)
+Explanation:
+Tokenize Function: The tokenize function splits the input text into words. Here, we use a simple split method which splits on whitespace. For more advanced tokenization, you could use libraries like NLTK or spaCy.
+
+Set Difference Function: The set_difference function tokenizes both texts, converts the lists of words into sets, and then finds the set differences. words1 - words2 gives the words that are unique to text1, and words2 - words1 gives the words that are unique to text2.
+
+----------------------
+
+The time complexity for the set difference method in text comparison can be broken down into several steps: tokenization, set creation, and set difference operation. Here's a detailed analysis of each step:
+
+1. Tokenization
+- Assuming the text is tokenized by splitting on spaces, the time complexity is O(n), where n is the number of characters in the text. This is because we need to scan through the entire text to find spaces and split the words.
+2. Set creation
+- Converting a list of words into a set involves adding each word to the set. This operation is O(m) on average, where m is the number of words in the text. Insertion into a set has an average time complexity of O(1), and we perform this operation m times.
+3. Set difference
+- The set difference operation A−B has a time complexity of O(max(∣A∣,∣B∣)), where ∣A∣ and ∣B∣ are the sizes of the two sets. This is because we need to check each element of the larger set to see if it is in the smaller set.
+
+Total time complexity = O(n1 + n2)
+
+-- Diff Algorithm --
+https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a#:~:text=The%20Diff%20algorithm%20is%20a,and%20improved%20by%20many%20researchers.
+
+-- Minimum edit distance --
+https://medium.com/@abelkrw/an-essential-algorithm-for-text-comparison-7ae348989cb0
