@@ -1,3 +1,4 @@
+# dictionary containing each node in the pyramids' chambers and references to their adjacent nodes
 graph = {
     1: [2, 6],
     2: [1, 3],
@@ -26,7 +27,7 @@ graph = {
     25: [24]
 }
 
-
+# code for depth-first search
 def dfs(graph, node):
     visited = set()
     stack = []
@@ -38,34 +39,27 @@ def dfs(graph, node):
         target = stack.pop()
         print(target, end = ' ')
 
-        # Reverse iterate through the edge list so results match recursive version.
         for vertex in reversed(graph[target]):
-            # Because visited is a set, this lookup is O(1).
             if vertex not in visited:
                 visited.add(vertex)
                 stack.append(vertex)
 
+# code for breadth-first search
 def bfs(graph, node):
-    # The video has visited as an array. I changed this to set because 'n not in visited' below is O(1) instead of O(n).
-    # See this link for more: https://wiki.python.org/moin/TimeComplexity.
-    visited = set()
-    # The video has queue as an array. I changed this to deque because popping the first element is O(1) instead of O(n).
-    # See this link for more: https://wiki.python.org/moin/TimeComplexity.
-    queue = deque()
+    visited = []
+    queue = []
 
-    visited.add(node)
+    visited.append(node)
     queue.append(node)
 
     while queue:
-        # popleft is O(1). For an array, pop(0) is O(n). Hence the change to deque from array.
-        s = queue.popleft()
-        print(s, end = ' ')
+        target = queue.pop(0)
+        print(target, end = ' ')
 
-        for n in graph[s]:
-            # Because visited is a set, this lookup is O(1).
-            if n not in visited:
-                visited.add(n)
-                queue.append(n)
+        for adjecent_node in graph[target]:
+            if adjecent_node not in visited:
+                visited.append(adjecent_node)
+                queue.append(adjecent_node)
 
 def main():
     bfs(graph, 1)
