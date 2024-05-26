@@ -87,8 +87,8 @@ def minimum_edit_distance(source, target):
 
 def main():
     # Test the minimum_edit_distance function
-    source_text = "gay"
-    target_text = "gay"
+    source_text = "ancient"
+    target_text = "antediluvian"
     distance = minimum_edit_distance(source_text, target_text)
     print("Minimum Edit Distance:", distance)
 
