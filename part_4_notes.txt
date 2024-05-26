@@ -55,5 +55,31 @@ Total time complexity = O(n1 + n2)
 -- Diff Algorithm --
 https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a#:~:text=The%20Diff%20algorithm%20is%20a,and%20improved%20by%20many%20researchers.
 
--- Minimum edit distance --
+-- Minimum edit distance (MED) --
 https://medium.com/@abelkrw/an-essential-algorithm-for-text-comparison-7ae348989cb0
+
+Pseudocode for MED:
+# MED implements a bottom-up dynamic programming approach via tabulation
+minimum_edit_distance(first_text, second_text):
+    m = length(first_text)
+    n = length(second_text)
+
+    # Initialize the 2D matrix
+    dp = array of size (m + 1) x (n + 1) with cells initialized with zeroes
+
+    # Initialize the first row and column
+    for the first row:
+        initialize values of cells starting from 0 to m
+    for the first column:
+        initialize values of cells starting from 0 to n
+
+    # Traverse through the matrix
+    for i = 1 to m:
+        for j = 1 to n:
+            if first_text[i - 1] == second_text[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]) + 1
+
+    # Return the number of operations required to change first_text to second_text
+    return minimum edit distance (units) of two texts
