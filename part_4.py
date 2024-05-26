@@ -85,6 +85,9 @@ def minimum_edit_distance(source, target):
 
     return dp[m][n]
 
+def set_difference(source, target):
+    return 0
+
 def main():
     # Test the minimum_edit_distance function
     source_text = "ancient"

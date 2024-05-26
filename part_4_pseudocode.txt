@@ -1,0 +1,16 @@
+def set_difference(source, target):
+    pairs = initialize a dictionary to keep matching word-pairs
+
+    # Tokenize the texts
+    words1 = split source into its individual words
+    words2 = split target into its individual words
+    
+    # Find the difference in each direction
+    diff1 = words1 - words2
+    diff2 = words2 - words1
+    
+    # Assign each word from the source to its pair in target 
+    for i in range(len(diff1)):
+        pairs[word_from_source] = word_from_target
+
+    return pairs
