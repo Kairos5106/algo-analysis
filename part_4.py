@@ -60,9 +60,10 @@ Until we are reunited once more, know that
 you are always with me, guiding me through
 the labyrinth of life with your love and light.
 With all my heart,
-Your devoted"""
+Your devoted."""
 
 def minimum_edit_distance(source, target):
+    # Get the length of source text and target text
     m = len(source)
     n = len(target)
 
@@ -85,14 +86,25 @@ def minimum_edit_distance(source, target):
 
     return dp[m][n]
 
-def set_difference(source, target):
-    return 0
+def ordered_set_difference(source, target):
+    # Initialize a dictionary to store matching word-pairs
+    pairs = dict()
+
+    # Tokenize the texts
+    words1 = source.split()
+    words2 = target.split()
+
+    # Iteratively compare words from both texts simultaneously
+    index = 0
+    while index < len(words1) and index < len(words2):
+        if words1[index] != words2[index]:
+            pairs[words1[index]] = words2[index]
+        index += 1
+
+    return pairs
 
 def main():
-    # Test the minimum_edit_distance function
-    source_text = "ancient"
-    target_text = "antediluvian"
-    distance = minimum_edit_distance(source_text, target_text)
-    print("Minimum Edit Distance:", distance)
+    print("Different words from both letters:", ordered_set_difference(first_letter, second_letter))
+    # print("Different words from both letters:", minimum_edit_distance('test', 'testing'))
 
 main()
